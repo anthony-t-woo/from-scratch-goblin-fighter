@@ -39,3 +39,12 @@ main {
     justify-content: space-evenly;
     align-items: center;
 }
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.fighter-image {
+    width: 300px;
+}

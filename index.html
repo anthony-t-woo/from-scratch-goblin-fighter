@@ -31,13 +31,16 @@
         <main>
             <section class="top-section">
                 <h2>You have defeated <span id="goblins-defeated">0</span> goblins</h2>
-                <div class="input-div">
+                <div class="input-container">
                     <input id="nameInput" placeholder="goblin name" />
                     <button id="nameButton">Challenge New Goblin</button>
                 </div>
             </section>
             <section class="bottom-section">
-                <div class="fighter-container"></div>
+                <div class="fighter-container">
+                    <h2 class="player-hp-div">Player HP: <span id="player-hp">10</span></h2>
+                    <img id="fighter-image" class="fighter-image" src="./assets/fighter.png" />
+                </div>
                 <div class="goblins-container"></div>
             </section>
         </main>
