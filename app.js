@@ -6,9 +6,14 @@ const nameInput = document.getElementById('name-input');
 const nameButton = document.getElementById('name-button');
 const goblinsEl = document.querySelector('.goblins-container');
 const playerHealthEl = document.getElementById('player-hp');
+const fighterImageEl = document.getElementById('fighter-image');
 /* State */
-let playerHP = 5;
+let playerHP = 10;
 let goblinsDefeated = 0;
+let attacksLanded = 0;
+let totalAttacks = 0;
+let counterattacksLanded = 0;
+
 // Starter Goblins
 const goblins = [
     { name: 'Drew', health: 4 },
@@ -40,22 +45,33 @@ function displayGoblins() {
             }
 
             if (goblin.health > 0) {
+                totalAttacks++;
                 if (Math.random() > 0.5) {
                     goblin.health--;
+                    attacksLanded++;
                     alert(`Your attack on ${goblin.name} was successful`);
                     if (goblin.health === 0) {
                         goblinsDefeated++;
                         goblinsDefeatedEl.textContent = goblinsDefeated;
                         alert(`${goblin.name} has been defeated`);
+                        displayGoblins();
+                        return;
                     }
                     displayGoblins();
                 } else {
                     alert(`You attacked ${goblin.name} and missed`);
                 }
 
-                if (Math.random() > 0.8) {
+                if (Math.random() > 0.7) {
                     playerHP--;
+                    counterattacksLanded++;
                     alert(`${goblin.name} landed a counter attack`);
+                    if (playerHP == 0) {
+                        alert(
+                            `GAME OVER: You have been defeated by the goblin army. You waged ${totalAttacks} attacks and landed ${attacksLanded} blows. The goblins managed to hit you back ${counterattacksLanded} times`
+                        );
+                        fighterImageEl.src = './assets/skeleton.png';
+                    }
                 } else {
                     alert(`${goblin.name} attempted a counter attack and missed`);
                 }
