@@ -1,13 +1,14 @@
 /* Imports */
 import { renderDiv } from './render-utils.js';
 /* Get DOM Elements */
-const goblinsKilled = document.getElementById('goblins-defeated');
+const goblinsDefeatedEl = document.getElementById('goblins-defeated');
 const nameInput = document.getElementById('name-input');
 const nameButton = document.getElementById('name-button');
 const goblinsEl = document.querySelector('.goblins-container');
 const playerHealthEl = document.getElementById('player-hp');
 /* State */
 let playerHP = 5;
+let goblinsDefeated = 0;
 // Starter Goblins
 const goblins = [
     { name: 'Drew', health: 4 },
@@ -37,20 +38,31 @@ function displayGoblins() {
                 alert('Player has succumbed to the goblin attacks and can not go on fighting');
                 return;
             }
-            if (Math.random() > 0.5) {
-                goblin.health--;
-                alert(`Your attack on ${goblin.name} was successful`);
-                displayGoblins();
+
+            if (goblin.health > 0) {
+                if (Math.random() > 0.5) {
+                    goblin.health--;
+                    alert(`Your attack on ${goblin.name} was successful`);
+                    if (goblin.health === 0) {
+                        goblinsDefeated++;
+                        goblinsDefeatedEl.textContent = goblinsDefeated;
+                        alert(`${goblin.name} has been defeated`);
+                    }
+                    displayGoblins();
+                } else {
+                    alert(`You attacked ${goblin.name} and missed`);
+                }
+
+                if (Math.random() > 0.8) {
+                    playerHP--;
+                    alert(`${goblin.name} landed a counter attack`);
+                } else {
+                    alert(`${goblin.name} attempted a counter attack and missed`);
+                }
             } else {
-                alert(`You attacked ${goblin.name} and missed`);
+                alert(`${goblin.name} has already been defeated`);
             }
 
-            if (Math.random() > 0.8) {
-                playerHP--;
-                alert(`${goblin.name} landed a counter attack`);
-            } else {
-                alert(`${goblin.name} attempted a counter attack and missed`);
-            }
             playerHealthEl.textContent = playerHP;
         });
 
