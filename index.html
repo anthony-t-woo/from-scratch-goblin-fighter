@@ -25,9 +25,21 @@
     <body>
         <header>
             <img class="logo" src="assets/html_css_js.png" alt="logo" />
-            <h1>Web App</h1>
+            <h1>Goblin Fighter App</h1>
         </header>
 
-        <main></main>
+        <main>
+            <section class="top-section">
+                <h2>You have defeated <span id="goblins-defeated">0</span> goblins</h2>
+                <div class="input-div">
+                    <input id="nameInput" placeholder="goblin name" />
+                    <button id="nameButton">Challenge New Goblin</button>
+                </div>
+            </section>
+            <section class="bottom-section">
+                <div class="fighter-container"></div>
+                <div class="goblins-container"></div>
+            </section>
+        </main>
     </body>
 </html>

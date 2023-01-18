@@ -33,3 +33,9 @@ header .logo {
 main {
     padding: 20px;
 }
+
+.top-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
