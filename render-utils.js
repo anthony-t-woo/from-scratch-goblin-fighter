@@ -9,7 +9,7 @@ export function renderDiv(object) {
 
     div.classList.add('goblin');
 
-    if (object.health > 1) {
+    if (object.health > 0) {
         emojiEl.textContent = '😈';
     } else {
         emojiEl.textContent = '💀';

@@ -5,6 +5,7 @@ const goblinsKilled = document.getElementById('goblins-defeated');
 const nameInput = document.getElementById('name-input');
 const nameButton = document.getElementById('name-button');
 const goblinsEl = document.querySelector('.goblins-container');
+const playerHealthEl = document.getElementById('player-hp');
 /* State */
 let playerHP = 10;
 // Starter Goblins
@@ -28,8 +29,16 @@ function displayGoblins() {
                 alert(`Your attack on ${goblin.name} was successful`);
                 displayGoblins();
             } else {
-                alert('Your attack missed');
+                alert(`You attacked ${goblin.name} and missed`);
             }
+
+            if (Math.random() > 0.8) {
+                playerHP--;
+                alert(`${goblin.name} landed a counter attack`);
+            } else {
+                alert(`${goblin.name} attempted a counter attack and missed`);
+            }
+            playerHealthEl.textContent = playerHP;
         });
 
         goblinsEl.append(goblinEl);
