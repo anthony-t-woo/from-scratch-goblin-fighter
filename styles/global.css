@@ -42,7 +42,6 @@ main {
 
 .bottom-section {
     display: flex;
-    flex-direction: column;
 }
 
 .fighter-image {
