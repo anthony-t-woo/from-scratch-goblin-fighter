@@ -32,23 +32,38 @@ header .logo {
 
 main {
     padding: 20px;
+    background-image: url('../assets/cave.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .top-section {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border: 3px solid yellow;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: lime;
 }
 
 .bottom-section {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.goblins-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .fighter-image {
     width: 300px;
 }
 
-.goblin {
+.goblin,
+.player-hp-div {
     display: flex;
     justify-content: space-around;
     align-items: center;
