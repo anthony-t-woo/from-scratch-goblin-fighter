@@ -47,3 +47,8 @@ main {
 .fighter-image {
     width: 300px;
 }
+
+.goblin {
+    display: flex;
+    justify-content: space-around;
+}
