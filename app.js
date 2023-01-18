@@ -40,7 +40,9 @@ function displayGoblins() {
         const goblinEl = renderDiv(goblin);
         goblinEl.addEventListener('click', () => {
             if (playerHP < 1) {
-                alert('Player has succumbed to the goblin attacks and can not go on fighting');
+                alert(
+                    'Player has succumbed to the goblin attacks and can not go on fighting. Refresh page to play again'
+                );
                 return;
             }
 
