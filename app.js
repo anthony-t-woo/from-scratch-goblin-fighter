@@ -18,7 +18,10 @@ const goblins = [
 
 /* Events */
 nameButton.addEventListener('click', () => {
-    const newGoblin = { name: nameInput.value, health: Math.ceil(Math.random() * 7) };
+    const newGoblin = {
+        name: nameInput.value || `Goober #${Math.ceil(Math.random() * 100)}`,
+        health: Math.ceil(Math.random() * 7),
+    };
     goblins.push(newGoblin);
     nameInput.value = '';
     displayGoblins();
