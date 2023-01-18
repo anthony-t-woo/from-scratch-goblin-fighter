@@ -22,9 +22,18 @@ function displayGoblins() {
     goblinsEl.textContent = '';
     for (let goblin of goblins) {
         const goblinEl = renderDiv(goblin);
+        goblinEl.addEventListener('click', () => {
+            if (Math.random() > 0.5) {
+                goblin.health--;
+                alert(`Your attack on ${goblin.name} was successful`);
+                displayGoblins();
+            } else {
+                alert('Your attack missed');
+            }
+        });
+
         goblinsEl.append(goblinEl);
     }
-    console.log(goblinsEl);
 }
 
 // (don't forget to call any display functions you want to run on page load!)
