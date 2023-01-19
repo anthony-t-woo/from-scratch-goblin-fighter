@@ -3,9 +3,13 @@ export function renderDiv(object) {
     const nameEl = document.createElement('p');
     const emojiEl = document.createElement('p');
     const healthEl = document.createElement('p');
+    const attackEl = document.createElement('p');
+    const defenseEl = document.createElement('p');
 
     nameEl.textContent = object.name;
-    healthEl.textContent = object.health;
+    healthEl.textContent = `HP: ${object.health}`;
+    attackEl.textContent = `Atk: ${object.attack}`;
+    defenseEl.textContent = `Def: ${object.defense}`;
 
     div.classList.add('goblin');
 
@@ -15,6 +19,6 @@ export function renderDiv(object) {
         emojiEl.textContent = '💀';
     }
 
-    div.append(nameEl, emojiEl, healthEl);
+    div.append(nameEl, emojiEl, healthEl, attackEl, defenseEl);
     return div;
 }

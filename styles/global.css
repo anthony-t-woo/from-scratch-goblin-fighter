@@ -53,13 +53,15 @@ main {
     justify-content: space-around;
     align-items: center;
 }
-.goblins-container {
+.goblins-container,
+.fighter-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .fighter-image {
-    width: 300px;
+    width: 400px;
 }
 
 .goblin,
