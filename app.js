@@ -27,6 +27,8 @@ nameButton.addEventListener('click', () => {
     const newGoblin = {
         name: nameInput.value || `Goober #${Math.ceil(Math.random() * 100)}`,
         health: Math.ceil(Math.random() * 7),
+        attack: 8 + Math.floor(Math.random() * 6),
+        defense: 2 + Math.floor(Math.random() * 2),
     };
     goblins.push(newGoblin);
     nameInput.value = '';
