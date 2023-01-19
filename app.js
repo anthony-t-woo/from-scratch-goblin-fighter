@@ -41,13 +41,36 @@ function displayGoblins() {
     for (let goblin of goblins) {
         const goblinEl = renderDiv(goblin);
         goblinEl.addEventListener('click', () => {
+            // qualifies if player has enough HP to proceed
             if (player.HP < 1) {
                 alert(
                     'Player has succumbed to the goblin attacks and can not go on fighting. Refresh page to play again'
                 );
                 return;
             }
+            // small chance to bump hp by one
+            if (Math.random() > 0.95) {
+                player.HP++;
+                alert('You found a berry and are now feeling nourished +1 hp');
+                displayPlayerStats();
+            }
+            // small chance for bump in defense or in attack
+            if (Math.random() > 0.75) {
+                // let randNum = Math.random();
+                // let bump = randNum.toFixed(2);
 
+                if (Math.random() > 0.5) {
+                    player.attack = player.attack + Number(Math.random().toFixed(2));
+                    alert('You are fired up and increased your attack');
+                } else {
+                    player.defense = player.defense + Number(Math.random().toFixed(2));
+                    alert('You are fired up and increased your defense');
+                }
+
+                displayPlayerStats();
+            }
+
+            // player attacks as long as goblin is still alive - chance of hit is based on attack/defense ratio
             if (goblin.health > 0) {
                 totalAttacks++;
                 if (Math.random() < (player.attack / goblin.defense) * 0.1) {
@@ -65,11 +88,11 @@ function displayGoblins() {
                 } else {
                     alert(`You attacked ${goblin.name} and missed`);
                 }
-
+                // goblin counterattack and success is based on attack/defense ratio
                 if (Math.random() < (goblin.attack / player.defense) * 0.1) {
                     player.HP--;
                     counterattacksLanded++;
-                    playerStatsEl.textContent = '';
+
                     displayPlayerStats();
                     alert(`${goblin.name} landed a counter attack`);
                     if (player.HP == 0) {
@@ -88,7 +111,9 @@ function displayGoblins() {
         goblinsEl.append(goblinEl);
     }
 }
+// clear and show player stats - refreshes values on call
 function displayPlayerStats() {
+    playerStatsEl.textContent = '';
     const playerRendering = renderPlayer(player);
     playerStatsEl.append(playerRendering);
 }
