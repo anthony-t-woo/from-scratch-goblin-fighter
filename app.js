@@ -48,28 +48,6 @@ function displayGoblins() {
                 );
                 return;
             }
-            // small chance to bump hp by one
-            if (Math.random() > 0.95) {
-                player.HP++;
-                alert('You found a berry and are now feeling nourished +1 hp');
-                displayPlayerStats();
-            }
-            // small chance for bump in defense or in attack
-            if (Math.random() > 0.75) {
-                // let randNum = Math.random();
-                // let bump = randNum.toFixed(2);
-
-                if (Math.random() > 0.5) {
-                    player.attack = player.attack + Number(Math.random().toFixed(2));
-                    alert('You are fired up and increased your attack');
-                } else {
-                    player.defense = player.defense + Number(Math.random().toFixed(2));
-                    alert('You are fired up and increased your defense');
-                }
-
-                displayPlayerStats();
-            }
-
             // player attacks as long as goblin is still alive - chance of hit is based on attack/defense ratio
             if (goblin.health > 0) {
                 totalAttacks++;
@@ -92,7 +70,6 @@ function displayGoblins() {
                 if (Math.random() < (goblin.attack / player.defense) * 0.1) {
                     player.HP--;
                     counterattacksLanded++;
-
                     displayPlayerStats();
                     alert(`${goblin.name} landed a counter attack`);
                     if (player.HP == 0) {
@@ -104,8 +81,28 @@ function displayGoblins() {
                 } else {
                     alert(`${goblin.name} attempted a counter attack and missed`);
                 }
+                // small chance to bump hp by one
+                if (Math.random() > 0.95) {
+                    player.HP++;
+                    alert('You found a berry and are now feeling nourished +1 hp');
+                    displayPlayerStats();
+                }
+                // small chance for bump in defense or in attack
+                if (Math.random() > 0.75) {
+                    // let randNum = Math.random();
+                    // let bump = randNum.toFixed(2);
+                    if (Math.random() > 0.5) {
+                        player.attack = player.attack + 0.25;
+                        alert('You are fired up and increased your attack');
+                    } else {
+                        player.defense = player.defense + 0.25;
+                        alert('You are fired up and increased your defense');
+                    }
+                    displayPlayerStats();
+                }
             } else {
                 alert(`${goblin.name} has already been defeated`);
+                return;
             }
         });
         goblinsEl.append(goblinEl);
