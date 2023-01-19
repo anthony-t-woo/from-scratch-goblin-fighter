@@ -22,3 +22,17 @@ export function renderDiv(object) {
     div.append(nameEl, emojiEl, healthEl, attackEl, defenseEl);
     return div;
 }
+
+export function renderPlayer(player) {
+    const div = document.createElement('div');
+    const HPEl = document.createElement('p');
+    const attackEl = document.createElement('p');
+    const defenseEl = document.createElement('p');
+
+    HPEl.textContent = `HP: ${player.HP}`;
+    attackEl.textContent = `Attack: ${player.attack}`;
+    defenseEl.textContent = `Defense: ${player.defense}`;
+
+    div.append(HPEl, attackEl, defenseEl);
+    return div;
+}

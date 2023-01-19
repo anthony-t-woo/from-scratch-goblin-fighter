@@ -1,11 +1,11 @@
 /* Imports */
-import { renderDiv } from './render-utils.js';
+import { renderDiv, renderPlayer } from './render-utils.js';
 /* Get DOM Elements */
 const goblinsDefeatedEl = document.getElementById('goblins-defeated');
 const nameInput = document.getElementById('name-input');
 const nameButton = document.getElementById('name-button');
 const goblinsEl = document.querySelector('.goblins-container');
-const playerHealthEl = document.querySelector('.player-hp-div');
+const playerStatsEl = document.querySelector('.player-div');
 const fighterImageEl = document.getElementById('fighter-image');
 /* State */
 let player = { HP: 10, attack: 11, defense: 4 };
@@ -67,6 +67,8 @@ function displayGoblins() {
                 if (Math.random() < (goblin.attack / player.defense) * 0.1) {
                     player.HP--;
                     counterattacksLanded++;
+                    playerStatsEl.textContent = '';
+                    displayPlayerStats();
                     alert(`${goblin.name} landed a counter attack`);
                     if (player.HP == 0) {
                         alert(
@@ -80,13 +82,15 @@ function displayGoblins() {
             } else {
                 alert(`${goblin.name} has already been defeated`);
             }
-
-            playerHealthEl.textContent = `HP: ${player.HP} Atk: ${player.attack} Def: ${player.defense}`;
         });
-
         goblinsEl.append(goblinEl);
     }
+}
+function displayPlayerStats() {
+    const playerRendering = renderPlayer(player);
+    playerStatsEl.append(playerRendering);
 }
 
 // (don't forget to call any display functions you want to run on page load!)
 displayGoblins();
+displayPlayerStats();
