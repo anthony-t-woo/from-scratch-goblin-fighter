@@ -72,7 +72,7 @@ function displayGoblins() {
                     counterattacksLanded++;
                     displayPlayerStats();
                     alert(`${goblin.name} landed a counter attack`);
-                    if (player.HP == 0) {
+                    if (player.HP === 0) {
                         alert(
                             `GAME OVER: You have been defeated by the goblin army. You waged ${totalAttacks} attacks and landed ${attacksLanded} blows. The goblins managed to hit you back ${counterattacksLanded} times`
                         );
