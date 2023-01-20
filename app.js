@@ -41,13 +41,7 @@ function displayGoblins() {
     for (let goblin of goblins) {
         const goblinEl = renderDiv(goblin);
         goblinEl.addEventListener('click', () => {
-            // qualifies if player has enough HP to proceed
-            if (player.HP < 1) {
-                alert(
-                    'Player has succumbed to the goblin attacks and can not go on fighting. Refresh page to play again'
-                );
-                return;
-            }
+            playerAlive();
             // player attacks as long as goblin is still alive - chance of hit is based on attack/defense ratio
             if (goblin.health > 0) {
                 totalAttacks++;
@@ -117,6 +111,16 @@ function plusStat() {
             alert('You are fired up and increased your defense');
         }
         displayPlayerStats();
+    }
+}
+
+// qualifies if player has enough HP to proceed
+function playerAlive() {
+    if (player.HP < 1) {
+        alert(
+            'Player has succumbed to the goblin attacks and can not go on fighting. Refresh page to play again'
+        );
+        return;
     }
 }
 
