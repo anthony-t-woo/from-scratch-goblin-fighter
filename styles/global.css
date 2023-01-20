@@ -32,4 +32,72 @@ header .logo {
 
 main {
     padding: 20px;
+    background-image: url('../assets/cave.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: burlywood;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 3px solid #4c3737;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #2f2d2d;
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.goblins-container,
+.fighter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fighter-image {
+    width: 400px;
+}
+
+.goblin {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    border: 3px solid #4c3737;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #2f2d2d;
+}
+
+.goblin:hover {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    border: 3px solid #bdd471;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #896666;
+    cursor: pointer;
+}
+
+.player-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    border: 3px solid #4c3737;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #2f2d2d;
 }
