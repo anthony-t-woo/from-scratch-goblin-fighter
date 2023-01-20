@@ -81,25 +81,8 @@ function displayGoblins() {
                 } else {
                     alert(`${goblin.name} attempted a counter attack and missed`);
                 }
-                // small chance to bump hp by one
-                if (Math.random() > 0.95) {
-                    player.HP++;
-                    alert('You found a berry and are now feeling nourished +1 hp');
-                    displayPlayerStats();
-                }
-                // small chance for bump in defense or in attack
-                if (Math.random() > 0.75) {
-                    // let randNum = Math.random();
-                    // let bump = randNum.toFixed(2);
-                    if (Math.random() > 0.5) {
-                        player.attack = player.attack + 0.25;
-                        alert('You are fired up and increased your attack');
-                    } else {
-                        player.defense = player.defense + 0.25;
-                        alert('You are fired up and increased your defense');
-                    }
-                    displayPlayerStats();
-                }
+                plusHealth();
+                plusStat();
             } else {
                 alert(`${goblin.name} has already been defeated`);
                 return;
@@ -113,6 +96,28 @@ function displayPlayerStats() {
     playerStatsEl.textContent = '';
     const playerRendering = renderPlayer(player);
     playerStatsEl.append(playerRendering);
+}
+
+// small chance to bump hp by one
+function plusHealth() {
+    if (Math.random() > 0.95) {
+        player.HP++;
+        alert('You found a berry and are now feeling nourished +1 hp');
+        displayPlayerStats();
+    }
+}
+// small chance for bump in defense or in attack
+function plusStat() {
+    if (Math.random() > 0.75) {
+        if (Math.random() > 0.5) {
+            player.attack = player.attack + 0.25;
+            alert('You are fired up and increased your attack');
+        } else {
+            player.defense = player.defense + 0.25;
+            alert('You are fired up and increased your defense');
+        }
+        displayPlayerStats();
+    }
 }
 
 // (don't forget to call any display functions you want to run on page load!)
